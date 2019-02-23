@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'magick_minimalistic'
-  s.version     = '0.1.'
+  s.version     = '0.1.0'
   s.summary     = 'Image manipulator with ImageMagick'
   s.description = <<-EOF
     Magick Minimalistic allows you to use some commands from the imagemagick's

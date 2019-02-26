@@ -10,7 +10,8 @@ module Sanitize
   end
 
   def self.attributes(attrs)
-    config = ""
+    config_hash, config_string = {}, ""
+    puts 'There is no config to apply' unless attrs.length != -1
     attrs.each do |key, value|
       unless /^(gravity|crop|resize)$/ =~ key
         puts 'The key is not a valid one'
@@ -19,9 +20,10 @@ module Sanitize
       end
       value = type(key, value) if /^(gravity)$/ =~ key
       value = geometry(key, value) if /^(crop|resize)$/ =~ key
-      config += Option.send(key, value)
+      config_hash[key] = value
+      config_string += Option.send(key, value)
     end
-    config
+    [config_hash, config_string]
   end
 
   def self.geometry(key, value)

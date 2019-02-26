@@ -14,6 +14,7 @@ module Sanitize
     attrs.each do |key, value|
       unless /^(gravity|crop|resize)$/ =~ key
         puts 'The key is not a valid one'
+        puts 'Ignoring wrong key...'
         next
       end
       value = type(key, value) if /^(gravity)$/ =~ key

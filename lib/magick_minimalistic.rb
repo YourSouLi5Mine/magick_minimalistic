@@ -23,11 +23,15 @@ module MagickMinimalistic
     def command 
       cmd = 'magick '
       puts 'Checking source file...'
-      cmd += "#{Sanitize::filename(source, true)} "
+      @source = Sanitize::filename(source, true) 
+      cmd += "#{source} "
       puts 'Checking attributes...'
-      cmd += "#{Sanitize::attributes(config)} "
+      attrs = Sanitize::attributes(config)
+      @config = attrs[0]
+      cmd += "#{attrs[1]} "
       puts 'Checking destiny file...'
-      cmd += "#{Sanitize::filename(destiny, false)}"
+      @destiny = Sanitize::filename(destiny, false)
+      cmd += "#{destiny}"
       cmd
     end
   end
